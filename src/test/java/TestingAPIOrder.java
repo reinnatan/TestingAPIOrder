@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 
 
-public class TestingOrderRequest {
+public class TestingAPIOrder {
 
     @Test
     public void testingProcessOrder() {
