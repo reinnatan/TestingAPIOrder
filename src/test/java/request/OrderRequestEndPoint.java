@@ -3,7 +3,7 @@ package request;
 
 import lombok.Getter;
 
-//class that request any
+
 public class OrderRequestEndPoint {
 
     @Getter
