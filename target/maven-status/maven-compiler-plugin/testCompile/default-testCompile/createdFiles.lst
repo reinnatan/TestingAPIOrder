@@ -1,4 +1,4 @@
+TestingAPIOrder.class
 request/OrderRequestEndPoint.class
-TestingRequest.class
-request/BaseRequest.class
-request/PayloadUtil.class
+utils/PayloadUtil.class
+utils/PayloadProccessing.class
