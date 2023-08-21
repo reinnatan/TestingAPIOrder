@@ -1,5 +1,5 @@
 # How to Run
-    - Please run the the server from this link 
+    - Please run the the server from this link before running the test
 [Simple Order Server](https://github.com/reinnatan/ServerAPIOrder)
 # Run All test
     - mvn clean test
