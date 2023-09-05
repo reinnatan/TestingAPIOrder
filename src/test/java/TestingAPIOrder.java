@@ -38,7 +38,6 @@ public class TestingAPIOrder {
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(object.getString("order_status"), "Processing");
         Assert.assertEquals(object.getString("order_description"), "Processed");
-        //Assert.assertEquals(response.getBody().asString().contains("Processing"), true);
     }
 
     @Test
