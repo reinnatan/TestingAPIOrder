@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="TestingAPIOrder" time="0.812" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="TestingAPIOrder" time="0.542" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="17.0.2+8-LTS-86"/>
@@ -60,9 +60,9 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="TestingAPIOrder" name="testingProcessOrder" time="0.782"/>
-  <testcase classname="TestingAPIOrder" name="testingNoOrderIdParam" time="0.007"/>
-  <testcase classname="TestingAPIOrder" name="testingNoOrderTimeStampParam" time="0.008"/>
-  <testcase classname="TestingAPIOrder" name="testingInvalidSpecialOrderParamDataType" time="0.008"/>
-  <testcase classname="TestingAPIOrder" name="testingNoOrderStatusParam" time="0.007"/>
+  <testcase classname="TestingAPIOrder" name="testingProcessOrder" time="0.521"/>
+  <testcase classname="TestingAPIOrder" name="testingNoOrderIdParam" time="0.005"/>
+  <testcase classname="TestingAPIOrder" name="testingNoOrderTimeStampParam" time="0.006"/>
+  <testcase classname="TestingAPIOrder" name="testingInvalidSpecialOrderParamDataType" time="0.006"/>
+  <testcase classname="TestingAPIOrder" name="testingNoOrderStatusParam" time="0.004"/>
 </testsuite>

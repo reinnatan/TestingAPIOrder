@@ -3,6 +3,8 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 import request.OrderRequestEndPoint;
@@ -25,13 +27,18 @@ public class TestingAPIOrder {
         Instant instant = timestamp.toInstant();
         JsonObject orderRequest = payloadProccessing.getJsonObjectFromFile("ProcessOrder.json");
         payloadProccessing.replacePropertyValue(orderRequest, "last_updated_timestamp", instant.toEpochMilli());
+        payloadProccessing.replacePropertyValue(orderRequest, "order_description", "Processed");
 
         //modify the request default payload
         request.body(orderRequest.toString());
         Response response = request.post(OrderRequestEndPoint.getEND_POINT_PROCESS_ORDER());
 
+        JSONObject object = new JSONObject(response.getBody().asString());
+
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.getBody().asString().contains("Processing"), true);
+        Assert.assertEquals(object.getString("order_status"), "Processing");
+        Assert.assertEquals(object.getString("order_description"), "Processed");
+        //Assert.assertEquals(response.getBody().asString().contains("Processing"), true);
     }
 
     @Test
@@ -46,7 +53,8 @@ public class TestingAPIOrder {
         Response response = request.post(OrderRequestEndPoint.getEND_POINT_PROCESS_ORDER());
 
         Assert.assertEquals(response.getStatusCode(), 400);
-        Assert.assertEquals(response.getBody().asString().contains("Invalid order id"), true);
+        JSONObject object = new JSONObject(response.getBody().asString());
+        Assert.assertEquals(object.getString("message"), "Invalid order id");
     }
 
 
@@ -62,7 +70,8 @@ public class TestingAPIOrder {
         Response response = request.post(OrderRequestEndPoint.getEND_POINT_PROCESS_ORDER());
 
         Assert.assertEquals(response.getStatusCode(), 400);
-        Assert.assertEquals(response.getBody().asString().contains("Invalid order status"), true);
+        JSONObject object = new JSONObject(response.getBody().asString());
+        Assert.assertEquals(object.getString("message"), "Invalid order status");
     }
 
     @Test
@@ -76,8 +85,9 @@ public class TestingAPIOrder {
         request.body(orderRequest.toString());
         Response response = request.post(OrderRequestEndPoint.getEND_POINT_PROCESS_ORDER());
 
+        JSONObject object = new JSONObject(response.getBody().asString());
         Assert.assertEquals(response.getStatusCode(), 400);
-        Assert.assertEquals(response.getBody().asString().contains("Invalid last updated timestamp"), true);
+        Assert.assertEquals(object.getString("message"),"Invalid last updated timestamp");
     }
 
 
@@ -93,7 +103,8 @@ public class TestingAPIOrder {
         Response response = request.post(OrderRequestEndPoint.getEND_POINT_PROCESS_ORDER());
 
         Assert.assertEquals(response.getStatusCode(), 400);
-        Assert.assertEquals(response.getBody().asString().contains("Invalid request body"), true);
+        JSONObject object = new JSONObject(response.getBody().asString());
+        Assert.assertEquals(object.getString("message").equals("Invalid request body"), true);
     }
 
 }
